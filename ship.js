@@ -34,6 +34,20 @@ function Ship(){
     pop();
   }
 
+  this.hits = function(asteroid){
+    var d = dist(this.pos.x,this.pos.y, asteroid.pos.x, asteroid.pos.y);
+    if(d < this.r + asteroid.r){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  this.destroy = function(){
+    throw new Error("Game Over!");
+  }
+
   this.edges = function(){
     if(this.pos.x > width + this.r){
       this.pos.x = -this.r;
