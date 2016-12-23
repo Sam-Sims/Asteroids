@@ -6,6 +6,11 @@ function laser(spos, angle) {
   this.update = function() {
     this.pos.add(this.vel);
   };
+
+  this.powerup = function(){
+    strokeWeight(10);
+  };
+
   this.render = function() {
     push();
     stroke("red");
@@ -32,6 +37,5 @@ function laser(spos, angle) {
       return false;
     }
   };
-
 
 }

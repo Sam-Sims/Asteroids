@@ -43,6 +43,15 @@ function Ship() {
     }
   };
 
+  this.hitsPowerup = function(powerup) {
+    var d = dist(this.pos.x, this.pos.y, powerup.pos.x, powerup.pos.y);
+    if (d < this.r + powerup.r) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   this.destroy = function() {
     textSize(32);
     fill(255);

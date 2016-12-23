@@ -1,6 +1,7 @@
 var ship;
 var asteroids = [];
 var lasers = [];
+var powerups = [];
 var score = 0;
 var level = 1;
 var lives = 3;
@@ -11,10 +12,17 @@ function setupAsteroids() {
   }
 }
 
+function setupPowerups() {
+  for (var i = 0; i < 1; i++) {
+    powerups.push(new Powerup());
+  }
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   ship = new Ship();
   setupAsteroids();
+  setupPowerups();
 }
 
 function draw() {
@@ -32,6 +40,17 @@ function draw() {
     asteroids[i].render();
     asteroids[i].update();
     asteroids[i].edges();
+  }
+
+  for (var i = 0; i < powerups.length; i++) {
+    if (score >= 2000) {
+      powerups[i].render();
+      powerups[i].update();
+      powerups[i].edges();
+    }
+    if(ship.hitsPowerup(powerups[i])){
+      console.log("Hit powerup");
+    }
   }
 
   for (var i = lasers.length - 1; i >= 0; i--) {
