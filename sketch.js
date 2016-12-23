@@ -3,6 +3,7 @@ var asteroids = [];
 var lasers = [];
 var score = 0;
 var level = 1;
+var lives = 3;
 
 function setupAsteroids() {
   for (var i = 0; i < level + 4; i++) {
@@ -20,7 +21,13 @@ function draw() {
   background(0);
   for (var i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
-      ship.destroy();
+      lives--;
+      if (lives >= 0) {
+        ship = new Ship();
+      } else {
+        ship.destroy();
+      }
+
     }
     asteroids[i].render();
     asteroids[i].update();
@@ -62,6 +69,7 @@ function draw() {
   fill(c);
   text("Score: " + str(score), 10, 30);
   text("Level: " + str(level), 200, 30);
+  text("Lives: " + str(lives), 390, 30);
 }
 
 function keyReleased() {

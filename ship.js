@@ -8,7 +8,7 @@ function Ship() {
 
   this.boosting = function(boost) {
     this.isBoosting = boost;
-  }
+  };
 
   this.update = function() {
     if (this.isBoosting) {
@@ -16,13 +16,13 @@ function Ship() {
     }
     this.pos.add(this.vel);
     this.vel.mult(0.99);
-  }
+  };
 
   this.boost = function() {
     var force = p5.Vector.fromAngle(this.heading);
     force.mult(0.1);
     this.vel.add(force);
-  }
+  };
 
   this.render = function() {
     push();
@@ -32,7 +32,7 @@ function Ship() {
     stroke(255);
     triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
     pop();
-  }
+  };
 
   this.hits = function(asteroid) {
     var d = dist(this.pos.x, this.pos.y, asteroid.pos.x, asteroid.pos.y);
@@ -41,11 +41,14 @@ function Ship() {
     } else {
       return false;
     }
-  }
+  };
 
   this.destroy = function() {
-    throw new Error("Game Over!");
-  }
+    textSize(32);
+    fill(255);
+    text("GAME OVER", (width / 2) - 100, height / 2);
+    throw new Error("Gameover");
+  };
 
   this.edges = function() {
     if (this.pos.x > width + this.r) {
@@ -57,14 +60,14 @@ function Ship() {
     } else if (this.pos.y < -this.r) {
       this.pos.y = height + this.r;
     }
-  }
+  };
 
   this.setRotation = function(angle) {
     this.rotation = angle;
-  }
+  };
 
   this.turn = function() {
     this.heading += this.rotation;
-  }
+  };
 
 }
