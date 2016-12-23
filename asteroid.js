@@ -7,7 +7,7 @@ function Asteroid(pos, r) {
   if (r) {
     this.r = r * 0.5;
   } else {
-    this.r = random(15, 50);
+    this.r = random(30, 75);
   }
 
   this.vel = p5.Vector.random2D();
