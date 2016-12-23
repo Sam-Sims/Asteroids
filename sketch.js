@@ -60,7 +60,8 @@ function draw() {
     textSize(32);
     var c = color('magenta');
     fill(c);
-    text(str(score), 10, 30);
+    text("Score: " + str(score), 10, 30);
+    text("Level: " + str(level), 200, 30);
 }
 
 function keyReleased() {
