@@ -1,6 +1,7 @@
 var ship;
 var asteroids = [];
 var lasers = [];
+var score = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -36,6 +37,7 @@ function draw() {
           }
           asteroids.splice(j, 1);
           lasers.splice(i, 1);
+          score += 10;
           break;
         }
       }
@@ -46,6 +48,9 @@ function draw() {
   ship.turn();
   ship.update();
   ship.edges();
+  textSize(32);
+  fill(50);
+  text(str(score), 10, 30);
 }
 
 function keyReleased(){
