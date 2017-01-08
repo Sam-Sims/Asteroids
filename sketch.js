@@ -7,7 +7,7 @@ var level = 1;
 var lives = 3;
 
 function setupAsteroids() {
-  for (var i = 0; i < level + 4; i++) {
+  for (var i = 0; i < level + 40; i++) {
     asteroids.push(new Asteroid());
   }
 }
